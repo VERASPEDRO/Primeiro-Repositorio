@@ -1,0 +1,71 @@
+--restrições
+================================================
+--23)Crie uma base de dados prodDatabase
+--24) Dentro da base de dados prodDatabase inclua a tabela Produto com as seguintes
+--colunas id int primary key identity, nome varchar(100), valor decimal(10,4)
+CREATE TABLE produtos (
+idproduto integer not null,
+nome varchar (100),
+valor numeric (10,4),
+constraint pk_prod_idprod PRIMARY KEY (idproduto)
+);
+--25) Dentro da base de dados prodDatabase inclua a tabela Pedido com as seguintes
+--colunas: id int primary key, codigo int, cliente varchar(255) dataCriacao datetime.
+CREATE TABLE pedido (
+idpedido integer PRIMARY KEY, 
+cliente varchar (225),
+data_criacao date
+);
+--26) Dentro da base de dados prodDatabase inclua a tabela PedidoItem com as seguintes
+--colunas: idPedido int foreign key references pedido(id), idProduto int foreign key references
+--produto(id), quantidade int default 0
+CREATE TABLE pedido_item(
+idpedido integer not null,
+idproduto integer not null, 
+quantidade integer default 0, 
+constraint fk_peditem_ped foreign key (idpedido)
+references pedido (idpedido),
+constraint fk_peditem_prod foreign key (idproduto)
+references produtos (idproduto)
+);
+--27)Dentro da base de dados prodDatabase inclua a tabela Entregas com as seguintes
+--colunas: id not null primary key identity, idPedido int , rua varchar(100), numero
+--varchar(1000), bairro varchar(255) cidade varchar(255).
+CREATE TABLE entregas (
+identregas integer not null primary key,
+rua varchar (100),
+numero varchar (225),
+cidade varchar (225)
+)
+--28) altere a tabela Entregas para que o idPedido seja uma chave estrangeira apontando
+--para a coluna id da tabela Pedido.
+ALTER TABLE entregas
+ADD CONSTRAINT fk_entregas_pedido
+FOREIGN KEY (idpedido)
+REFERENCES pedido(idpedido);
+--29) Crie uma tabela Cargo com os campos id int primary key, nome varchar
+--30) Crie uma tabela Colaborador com os campos id int, nome varchar, sobrenome varchar,
+--cargo int
+SELECT column_name, data_type
+FROM information_schema.columns
+WHERE table_name = 'entregas';
+--31) altere a tabela Colaborador para que a coluna id seja primary key
+--32) altere a tabela Colaborador para que a coluna cargo seja uma foreign key ligando a
+--tabela Cargos com o campo id.
+--33) Crie uma tabela Marcas com os campos id INT primary key identity, nome varchar;
+--34) Crie uma tabela Modelos com os campos id int identity, idMarca int, nome varchar;
+--36) Altere a tabela Modelos para que a coluna idMarca seja uma foreign key relacionada
+--com a tabela marcas.
+--37) Crie uma tabela veiculos com as colunas id int primary key identity, idModelo int foreign
+--key references modelos(id), codigo int not null, placa varchar not null unique, cor varchar not
+--null
+--38) Crie uma Tabela Empresas com os campos id not null primary key, nome varchar not
+--null
+--39) Crie uma tabela Filiais com os campos id int pk identity, nome varchar not null, matriz int
+--foreign key relacionando a tabela Empresas (id)
+--40) Crie uma tabela Setores com os campos id pk, nome varchar not null, idFilial FK
+--filiais(id)
+--41) Crie uma tabela Funcionarios com os campos id not null primary key, nome varchar,
+--setor fk Setores(id), idFilial fk Filiais(id)
+--42) Crie uma tabela Dependentes com os campos id int pk identity, nome varchar not null,
+--filiacao fk functionarios(id)
