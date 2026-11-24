@@ -8,6 +8,7 @@ public class Console {
         System.out.print(" dia!\n\n");
         System.out.println("Bom dia");
         System.out.println("Bom dia");
+        System.out.println("oi");
 
 
 
