@@ -1,0 +1,16 @@
+# Java compilado
+*.class
+out/
+target/
+
+# IntelliJ: arquivos pessoais e temporários
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/shelf/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Repositório independente
+Primeiro-Repositorio/

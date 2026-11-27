@@ -1,8 +1,0 @@
-Meu primeiro projeto com Git.
-
-Estou aprendendo:
-- Working Directory
-- Untracked
-- Tracked
-- Staging Area
-- Commit
